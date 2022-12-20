@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/padding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="#00FFFFFF"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.966"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@android:drawable/ic_menu_sort_by_size" />
+
+        <TextView
+            android:id="@+id/textMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/baloo"
+            android:text="Ucz się kształtu cyfr i liter z nami!"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@id/imageMain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <TextView
+            android:id="@+id/textMainComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/baloo"
+            android:text="Wybierz na co masz dzisiaj ochotę!"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/imageMain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textMain" />
+
+        <ImageView
+            android:id="@+id/imageMain"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:srcCompat="@drawable/app_main" />
+
+        <LinearLayout
+            android:id="@+id/box1"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageMain">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/opt1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageOpt1"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/opt_1" />
+
+                <TextView
+                    android:id="@+id/textOpt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/aclonica"
+                    android:shadowColor="#80000000"
+                    android:shadowRadius="1"
+                    android:text="Rysuj"
+                    android:textSize="24dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/opt2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageOpt2"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/opt_2" />
+
+                <TextView
+                    android:id="@+id/textOpt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/aclonica"
+                    android:shadowColor="#80000000"
+                    android:shadowRadius="1"
+                    android:text="Ćwicz"
+                    android:textSize="24dp" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/box1">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/opt3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageOpt3"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/opt_3" />
+
+                <TextView
+                    android:id="@+id/textOpt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/aclonica"
+                    android:shadowColor="#80000000"
+                    android:shadowRadius="1"
+                    android:text="Osiągnięcia"
+                    android:textSize="24dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/opt4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageOpt4"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/opt_4" />
+
+                <TextView
+                    android:id="@+id/textOpt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/aclonica"
+                    android:shadowColor="#80000000"
+                    android:shadowRadius="1"
+                    android:text="Zakończ"
+                    android:textSize="24dp" />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
