@@ -1,23 +1,17 @@
-package pl.polsl.paum.proj;
+package pl.polsl.paum.proj.drawactivities;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import pl.polsl.paum.proj.R;
+import pl.polsl.paum.proj.canvases.DrawCanvas;
+import pl.polsl.paum.proj.canvases.ExerciseCanvas;
+import pl.polsl.paum.proj.canvases.PreviewCanvas;
 
 public class DrawActivity extends AppCompatActivity {
-    public static int brushclr = Color.BLACK;
-    public static Paint brush = new Paint();
     private DrawCanvas drawCanvas;
     
     @Override
@@ -50,8 +44,6 @@ public class DrawActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                brush.setColor(Color.BLACK);
-                brushclr = Color.BLACK;
             }
         });
     }
@@ -61,8 +53,6 @@ public class DrawActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                brush.setColor(Color.WHITE);
-                brushclr = Color.WHITE;
             }
         });
     }
@@ -72,7 +62,7 @@ public class DrawActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawCanvas.savebit();
+
             }
         });
     }

@@ -1,0 +1,97 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory app:title="Opcje nauczycielskie">
+        <EditTextPreference
+            app:key="password"
+            app:title="Hasło wstępu"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory app:title="Konfiguracja płótna">
+        <SeekBarPreference
+            app:key="drawSize"
+            app:min="24"
+            app:defaultValue="32"
+            android:max="128"
+            app:showSeekBarValue="true"
+            app:title="Grubość Pisaka (px)" />
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="drawColor"
+            android:title="Kolor pisaka"
+            app:preference_dialog_title="Kolor pisaka"
+            app:preference_dialog_positive="Ustaw"
+            app:preference_dialog_negative="Anuluj"
+            app:default_color="@color/black"/>
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="backgroundColor"
+            android:title="Kolor tła"
+            app:preference_dialog_title="Kolor tła"
+            app:preference_dialog_positive="Ustaw"
+            app:preference_dialog_negative="Anuluj"
+            app:default_color="@color/white"/>
+
+        <SeekBarPreference
+            app:key="svgSize"
+            app:min="30"
+            app:defaultValue="75"
+            android:max="90"
+            app:showSeekBarValue="true"
+            app:title="Rozmiar znaku do odwzorowania (% ekranu)" />
+
+        <SeekBarPreference
+            app:key="svgOpacity"
+            app:min="20"
+            app:defaultValue="60"
+            android:max="80"
+            app:showSeekBarValue="true"
+            app:title="Przezroczystość znaku (%)" />
+
+        <SwitchPreferenceCompat
+            app:key="useSvgOpacityDisappear"
+            app:title="Ograniczony czas znaku" />
+
+        <SeekBarPreference
+            app:key="svgOpacityDisappear"
+            app:min="3"
+            app:defaultValue="10"
+            android:max="15"
+            app:showSeekBarValue="true"
+            app:title="Czas po którym znak zniknie (s)"
+            app:dependency="useSvgOpacityDisappear"
+            />
+
+        <PreferenceScreen
+            app:title="Podgląd">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="pl.polsl.paum.proj"
+                android:targetClass="pl.polsl.paum.proj.drawactivities.PreviewActivity"
+                />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory app:title="Zestaw znaków">
+        <PreferenceScreen
+            app:title="Edytuj pule zadań" />
+
+        <PreferenceScreen
+            app:title="Dodaj zestaw">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="pl.polsl.paum.proj"
+                android:targetClass="pl.polsl.paum.proj.FileExplorerActivity"
+                />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            app:title="Zarządzaj zestawami" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

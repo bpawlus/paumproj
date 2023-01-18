@@ -11,48 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:background="#00FFFFFF"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.966"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@android:drawable/ic_menu_sort_by_size" />
-
-        <TextView
-            android:id="@+id/textMain"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/baloo"
-            android:text="Ucz się kształtu cyfr i liter z nami!"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@id/imageMain"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-        <TextView
-            android:id="@+id/textMainComment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/baloo"
-            android:text="Wybierz na co masz dzisiaj ochotę!"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@id/imageMain"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textMain" />
-
         <ImageView
             android:id="@+id/imageMain"
             android:layout_width="160dp"
@@ -195,6 +153,58 @@
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/baloo"
+            android:text="Ucz się kształtu cyfr i liter z nami!"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@id/imageMain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="#00FFFFFF"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/buttonSettings"
+                android:layout_width="45dp"
+                android:layout_height="42dp"
+                app:srcCompat="@drawable/app_main"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="34dp" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/textMainComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/baloo"
+            android:text="Wybierz na co masz dzisiaj ochotę!"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/imageMain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textMain" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
