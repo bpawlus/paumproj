@@ -1,6 +1,5 @@
 package pl.polsl.paum.proj;
-
-import pl.polsl.paum.proj.InternalStorageManager;
+import static pl.polsl.paum.proj.InternalStorageManager.path;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -23,6 +22,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        InternalStorageManager.path = getFilesDir().getAbsolutePath();
+        path = getFilesDir().getAbsolutePath();
         setContentView(R.layout.activity_main);
 
         ArrayList<String> toAdd = new ArrayList<>();
@@ -79,9 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
         addDrawButton();
         addExerciseButton();
-        addResultsButton();
-        addExitButton();
         addSettingsButton();
+        addExitButton();
     }
 
 
@@ -106,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void addResultsButton() {
+    private void addSettingsButton() {
         CardView btn = (CardView)findViewById(R.id.opt3);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ResultsActivity.class));
+                showLoginDialog();
             }
         });
     }
@@ -126,17 +128,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void addSettingsButton() {
-        ImageButton btn = (ImageButton)findViewById(R.id.buttonSettings);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLoginDialog();
-            }
-        });
-    }
-
 
 
     private void showLoginDialog() {

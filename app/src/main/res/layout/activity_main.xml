@@ -17,8 +17,8 @@
             android:layout_height="160dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:srcCompat="@drawable/app_main" />
+            app:srcCompat="@drawable/app_main"
+            tools:layout_editor_absoluteY="76dp" />
 
         <LinearLayout
             android:id="@+id/box1"
@@ -119,7 +119,7 @@
                     android:fontFamily="@font/aclonica"
                     android:shadowColor="#80000000"
                     android:shadowRadius="1"
-                    android:text="Osiągnięcia"
+                    android:text="Nauczyciel"
                     android:textSize="24dp" />
 
             </androidx.cardview.widget.CardView>
@@ -166,29 +166,7 @@
             app:layout_constraintEnd_toStartOf="@id/imageMain"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:background="#00FFFFFF"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/buttonSettings"
-                android:layout_width="45dp"
-                android:layout_height="42dp"
-                app:srcCompat="@drawable/app_main"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="34dp" />
-        </androidx.appcompat.widget.Toolbar>
+            tools:layout_editor_absoluteY="76dp" />
 
         <TextView
             android:id="@+id/textMainComment"

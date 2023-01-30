@@ -7,7 +7,16 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-
+    <PreferenceCategory app:title="Wyniki">
+        <PreferenceScreen
+            app:title="Przeglądaj">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="pl.polsl.paum.proj"
+                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileImageActivity"
+                />
+        </PreferenceScreen>
+    </PreferenceCategory>
 
     <PreferenceCategory app:title="Konfiguracja płótna">
         <SeekBarPreference
@@ -44,25 +53,11 @@
 
         <SeekBarPreference
             app:key="svgOpacity"
-            app:min="20"
-            app:defaultValue="60"
-            android:max="80"
+            app:min="5"
+            app:defaultValue="20"
+            android:max="50"
             app:showSeekBarValue="true"
             app:title="Przezroczystość znaku (%)" />
-
-        <SwitchPreferenceCompat
-            app:key="useSvgOpacityDisappear"
-            app:title="Ograniczony czas znaku" />
-
-        <SeekBarPreference
-            app:key="svgOpacityDisappear"
-            app:min="3"
-            app:defaultValue="10"
-            android:max="15"
-            app:showSeekBarValue="true"
-            app:title="Czas po którym znak zniknie (s)"
-            app:dependency="useSvgOpacityDisappear"
-            />
 
         <PreferenceScreen
             app:title="Podgląd">
@@ -78,19 +73,31 @@
 
     <PreferenceCategory app:title="Zestaw znaków">
         <PreferenceScreen
-            app:title="Edytuj pule zadań" />
-
-        <PreferenceScreen
-            app:title="Dodaj zestaw">
+            app:title="Zarządzaj znakami (wszystkie)">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="pl.polsl.paum.proj"
-                android:targetClass="pl.polsl.paum.proj.FileExplorerActivity"
+                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileManageActivity"
                 />
         </PreferenceScreen>
 
         <PreferenceScreen
-            app:title="Zarządzaj zestawami" />
+            app:title="Zarządzaj znakami (dodane)">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="pl.polsl.paum.proj"
+                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileManageFilteredActivity"
+                />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            app:title="Dodaj znaki">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="pl.polsl.paum.proj"
+                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileExplorerActivity"
+                />
+        </PreferenceScreen>
 
     </PreferenceCategory>
 

@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FF000000">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/canvas"
+    <ImageView
+        android:id="@+id/imagePreview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <include
-            android:id="@+id/include"
-            layout="@layout/view_display" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageButton
         android:id="@+id/buttonBack"
@@ -33,11 +23,10 @@
         app:srcCompat="@drawable/prev_arr" />
 
     <ImageButton
-        android:id="@+id/buttonNext"
+        android:id="@+id/buttonDelete"
         android:layout_width="120dp"
         android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/next_arr" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:srcCompat="@drawable/delete" />
+</android.support.constraint.ConstraintLayout>

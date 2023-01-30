@@ -25,9 +25,9 @@ public abstract class BaseDrawCanvas extends View {
     protected int imgwidth;
     protected int imgheight;
 
-    private int backgroundColor;
-    private int drawColor;
-    private int drawSize;
+    protected int backgroundColor;
+    protected int drawColor;
+    protected int drawSize;
 
     public BaseDrawCanvas(Context context) {
         super(context);

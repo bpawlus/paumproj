@@ -3,6 +3,8 @@ package pl.polsl.paum.proj.drawactivities;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -24,13 +26,11 @@ public class DrawActivity extends AppCompatActivity {
         layout.addView(drawCanvas);
 
         addReturnButton();
-        addPencilButton();
-        addEraserButton();
         addExportButton();
     }
 
     private void addReturnButton() {
-        Button btn = (Button)findViewById(R.id.buttonBack);
+        ImageButton btn = (ImageButton)findViewById(R.id.buttonBack);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,30 +39,12 @@ public class DrawActivity extends AppCompatActivity {
         });
     }
 
-    private void addPencilButton() {
-        Button btn = (Button)findViewById(R.id.buttonPencil);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-    }
-
-    private void addEraserButton() {
-        Button btn = (Button)findViewById(R.id.buttonEraser);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-    }
-
     private void addExportButton() {
-        Button btn = (Button)findViewById(R.id.buttonExport);
+        ImageButton btn = (ImageButton)findViewById(R.id.buttonExport);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                drawCanvas.saveBitmap("Rysowanie");
             }
         });
     }

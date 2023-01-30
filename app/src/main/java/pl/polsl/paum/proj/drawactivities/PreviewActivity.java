@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import pl.polsl.paum.proj.R;
 import pl.polsl.paum.proj.canvases.PreviewCanvas;
@@ -29,7 +30,7 @@ public class PreviewActivity extends AppCompatActivity {
     }
 
     private void addReturnButton() {
-        Button btn = (Button)findViewById(R.id.buttonBack);
+        ImageButton btn = (ImageButton)findViewById(R.id.buttonBack);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

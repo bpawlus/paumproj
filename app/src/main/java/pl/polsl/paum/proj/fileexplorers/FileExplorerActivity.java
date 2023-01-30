@@ -1,26 +1,23 @@
-package pl.polsl.paum.proj;
+package pl.polsl.paum.proj.fileexplorers;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.FileUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import pl.polsl.paum.proj.InternalStorageManager;
+import pl.polsl.paum.proj.R;
 
 
 public class FileExplorerActivity extends ListActivity {
@@ -28,6 +25,7 @@ public class FileExplorerActivity extends ListActivity {
     private List<String> path = null;
     private String root="/storage/emulated/0";
     private TextView myPath;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class FileExplorerActivity extends ListActivity {
 
     private void getDir(String dirPath)
     {
-        myPath.setText("Ścieżka do zestawu zip: " + dirPath);
+        myPath.setText("Ścieżka do znaku: " + dirPath);
 
         item = new ArrayList<String>();
         path = new ArrayList<String>();
@@ -69,7 +67,7 @@ public class FileExplorerActivity extends ListActivity {
                 path.add(file.getPath());
                 item.add(name + "/");
             }
-            else if(extension.equals("zip")) {
+            else if(extension.equals("svg")) {
                 path.add(file.getPath());
                 item.add(file.getName());
             }
@@ -89,7 +87,7 @@ public class FileExplorerActivity extends ListActivity {
                 getDir(path.get(position));
             else
             {
-                new AlertDialog.Builder(this).setTitle("[" + file.getName() + "] nie mógł zostać odczytany!")
+                new AlertDialog.Builder(this).setTitle(file.getName() + " nie mógł zostać odczytany!")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -99,13 +97,37 @@ public class FileExplorerActivity extends ListActivity {
         }
         else
         {
-            new AlertDialog.Builder(this).setTitle("Dodać zestaw: [" + file.getName() + "]?")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(FileExplorerActivity.this);
+            LayoutInflater inflater = FileExplorerActivity.this.getLayoutInflater();
+
+            View view = inflater.inflate(R.layout.view_import, null);
+
+            TextView textView = view.findViewById(R.id.textViewFile);
+            textView.setText(file.getName());
+
+            Spinner spinner = view.findViewById(R.id.spinnerLabel);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, InternalStorageManager.allowed);
+            spinner.setAdapter(adapter);
+
+            builder.setView(view)
+                    .setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            InternalStorageManager.addZipContent(file.getAbsolutePath(), file.getName());
+                        public void onClick(DialogInterface dialog, int id) {
+                            boolean result = InternalStorageManager.addSvgContent(file.getAbsolutePath(), file.getName(), spinner.getSelectedItem().toString());
+                            if(result)
+                            {
+                                InternalStorageManager.updateTaskAmounts();
+                                Toast.makeText(getApplicationContext(), "Poprawnie dodano: "+file.getName(), Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), "Nie udało się dodać: "+file.getName(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }).show();
+                    });
+
+            Dialog dialog = builder.create();
+            dialog.show();
         }
 
     }
