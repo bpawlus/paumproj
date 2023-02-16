@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -32,9 +33,6 @@ import pl.polsl.paum.proj.SvgFile;
 public class ExerciseCanvas extends DrawCanvas {
     private ArrayList<SvgFile> bitmapTasks;
     private int taskId = 0;
-
-    protected float svgSize;
-    protected float svgOpacity;
 
     public ExerciseCanvas(Context context) {
         super(context);
@@ -72,13 +70,7 @@ public class ExerciseCanvas extends DrawCanvas {
     @Override
     protected void init(Context context) {
         super.init(context);
-
         bitmapTasks = new ArrayList<>();
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        svgSize = sharedPreferences.getInt("svgSize", 75);
-        svgSize /= 100;
-        svgOpacity = sharedPreferences.getInt("svgOpacity", 60);
-        svgOpacity *= 2.55;
 
         for(Map.Entry<String, SvgFile> entry : InternalStorageManager.taskAmounts.entrySet())
         {
@@ -121,20 +113,27 @@ public class ExerciseCanvas extends DrawCanvas {
     }
 
     @Override
-    protected void onDrawSource(Canvas newCanvas, Paint paint) {
-        if(hasTask()) {
-            newCanvas.drawBitmap(generateBitmap(getContext(), bitmapTasks.get(taskId).getSvg()), 0, 0, paint);
-        }
+    protected Paint setPaintToOverlay(Paint paint, int clr, float opacity)
+    {
+        paint = super.setPaintToOverlay(paint, clr, opacity);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setAntiAlias(true);
+        return paint;
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    protected void onDrawOverlay(Canvas canvas, Paint paint) {
         if(hasTask()) {
-            Paint paint = new Paint();
-            paint.setAlpha((int) svgOpacity);
             Bitmap helperBitmap = generateBitmap(getContext(), bitmapTasks.get(taskId).getSvg());
-            canvas.drawBitmap(helperBitmap, ofx, ofy, paint);
+
+            Bitmap compositeBitmap = Bitmap.createBitmap(imgwidth, imgheight, Bitmap.Config.ARGB_8888);
+            Canvas newCanvas = new Canvas(compositeBitmap);
+
+            newCanvas.drawBitmap(helperBitmap, 0, 0, paint); //DEST
+            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+            newCanvas.drawRect(0, 0, width, height, paint); //SRC
+
+            canvas.drawBitmap(compositeBitmap, ofx, ofy, null);
         }
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 
 import pl.polsl.paum.proj.InternalStorageManager;
 
-public class DrawCanvas extends PreviewCanvas {
+public class DrawCanvas extends BaseDrawCanvas {
     public List<Path> paths = new ArrayList<>();
     private Path path;
 
@@ -29,11 +29,11 @@ public class DrawCanvas extends PreviewCanvas {
             case MotionEvent.ACTION_DOWN:
                 path = new Path();
                 paths.add(path);
-                path.moveTo(x-ofx,y-ofy);
+                path.moveTo(x,y);
                 invalidate();
                 return true;
             case MotionEvent.ACTION_MOVE:
-                path.lineTo(x-ofx,y-ofy);
+                path.lineTo(x,y);
                 invalidate();
                 return true;
             default:
@@ -46,10 +46,14 @@ public class DrawCanvas extends PreviewCanvas {
     }
 
     @Override
-    protected void onDrawDestination(Canvas newCanvas, Paint paint) {
+    protected void onDrawPen(Canvas newCanvas, Paint paint) {
         for(int i = 0; i < paths.size(); i++) {
             newCanvas.drawPath(paths.get(i), paint);
         }
+    }
+
+    @Override
+    protected void onDrawOverlay(Canvas canvas, Paint paint) {
     }
 
     public Bitmap saveBitmap(String extra){
@@ -58,7 +62,7 @@ public class DrawCanvas extends PreviewCanvas {
         canvas.setBitmap(saveBitmap);
         this.draw(canvas);
 
-        String pattern = "yyyy-MM-dd hh:mm:ss";
+        String pattern = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String date = simpleDateFormat.format(new Date());
         String name = date + " Wynik - " + extra + ".jpg";

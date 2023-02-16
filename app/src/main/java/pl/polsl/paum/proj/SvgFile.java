@@ -14,7 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class SvgFile {
+public class SvgFile implements Comparable<SvgFile> {
     private String label;
     private String directory;
     private int amount;
@@ -69,5 +69,14 @@ public class SvgFile {
 
     public SVG getSvg() {
         return svg;
+    }
+
+    @Override
+    public int compareTo(SvgFile o) {
+        int i = InternalStorageManager.allowed.indexOf(o.getLabel());
+        int j = InternalStorageManager.allowed.indexOf(label);
+        if(i<j)
+            return 1;
+        return -1;
     }
 }

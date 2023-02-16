@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AlphabetWriting"
-        tools:targetApi="31" >
+        tools:targetApi="31"
+        android:screenOrientation="landscape" >
 
         <activity
             android:name=".SettingsActivity"
@@ -43,12 +44,6 @@
         <activity
             android:name=".fileexplorers.FileExplorerActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -57,12 +52,6 @@
         <activity
             android:name=".fileexplorers.FileManageActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -71,12 +60,6 @@
         <activity
             android:name=".fileexplorers.FileManageFilteredActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -85,11 +68,6 @@
         <activity
             android:name=".fileexplorers.FileImageActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -99,11 +77,6 @@
         <activity
             android:name=".fileexplorers.FileImagePreviewActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -113,11 +86,6 @@
         <activity
             android:name=".drawactivities.DrawActivity"
             android:exported="true" >
-
-            <!-- Default Intent Filter -->
-            <intent-filter>
-                <action android:name="android.intent.action.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".drawactivities.ExerciseActivity"

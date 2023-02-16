@@ -2,6 +2,7 @@ package pl.polsl.paum.proj.fileexplorers;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class FileManageActivity extends ListActivity {
 
     protected void getDir()
     {
-        myPath.setText("Zarządzaj znakami");
+        myPath.setText("Dodaj wzorce do ćwiczenia");
 
         items = new ArrayList<SvgFile>();
 
@@ -46,6 +47,7 @@ public class FileManageActivity extends ListActivity {
         {
             items.add(entry.getValue());
         }
+        Collections.sort(items);
 
         ArrayAdapter<SvgFile> fileList = new SvgFileAdapter(this, R.layout.manager_row, items.toArray(new SvgFile[items.size()]));
         setListAdapter(fileList);

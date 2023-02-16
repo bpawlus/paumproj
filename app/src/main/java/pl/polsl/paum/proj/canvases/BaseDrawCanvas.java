@@ -2,17 +2,12 @@ package pl.polsl.paum.proj.canvases;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
 import androidx.preference.PreferenceManager;
 
 public abstract class BaseDrawCanvas extends View {
@@ -29,6 +24,10 @@ public abstract class BaseDrawCanvas extends View {
     protected int drawColor;
     protected int drawSize;
 
+    protected float svgSize;
+    protected float svgOpacity;
+    protected int svgColor;
+
     public BaseDrawCanvas(Context context) {
         super(context);
         init(context);
@@ -41,6 +40,12 @@ public abstract class BaseDrawCanvas extends View {
         backgroundColor = sharedPreferences.getInt("backgroundColor", Color.WHITE);
         drawColor = sharedPreferences.getInt("drawColor", Color.BLACK);
         drawSize = sharedPreferences.getInt("drawSize", 32);
+
+        svgColor = sharedPreferences.getInt("svgColor", Color.BLACK);
+        svgSize = sharedPreferences.getInt("svgSize", 75);
+        svgSize /= 100;
+        svgOpacity = sharedPreferences.getInt("svgOpacity", 60);
+        svgOpacity *= 2.55;
     }
 
     @Override
@@ -66,6 +71,13 @@ public abstract class BaseDrawCanvas extends View {
         return paint;
     }
 
+    protected Paint setPaintToOverlay(Paint paint, int clr, float opacity)
+    {
+        paint.setColor(svgColor);
+        paint.setAlpha((int) svgOpacity);
+        return paint;
+    }
+
     protected Paint setPaintToLines(Paint paint, int clr, float stroke)
     {
         paint.setAntiAlias(true);
@@ -77,26 +89,19 @@ public abstract class BaseDrawCanvas extends View {
         return paint;
     }
 
-    protected abstract void onDrawDestination(Canvas newCanvas, Paint paint);
-    protected abstract void onDrawSource(Canvas newCanvas, Paint paint);
+    protected abstract void onDrawPen(Canvas newCanvas, Paint paint);
+    protected abstract void onDrawOverlay(Canvas canvas, Paint paint);
 
     @Override
     protected void onDraw(Canvas canvas) {
         Paint penPaint = setPaintToLines(new Paint(), drawColor, (float)drawSize);
         Paint fillPaint = setPaintToFill(new Paint(), backgroundColor);
+        Paint paintOverlay = setPaintToOverlay(new Paint(), svgColor, svgOpacity);
 
         canvas.drawARGB(225, 225, 225, 255);
         canvas.drawRect(0, 0, width, height, fillPaint);
 
-        Bitmap compositeBitmap = Bitmap.createBitmap(imgwidth, imgheight, Bitmap.Config.ARGB_8888);
-        Canvas newCanvas = new Canvas(compositeBitmap);
-
-        onDrawDestination(newCanvas, penPaint);
-
-        penPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-
-        onDrawSource(newCanvas, penPaint);
-
-        canvas.drawBitmap(compositeBitmap, ofx, ofy, null);
+        onDrawPen(canvas, penPaint);
+        onDrawOverlay(canvas, paintOverlay);
     }
 }

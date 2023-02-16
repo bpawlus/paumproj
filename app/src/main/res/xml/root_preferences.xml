@@ -18,12 +18,12 @@
         </PreferenceScreen>
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="Konfiguracja płótna">
+    <PreferenceCategory app:title="Konfiguracja pisaka">
         <SeekBarPreference
             app:key="drawSize"
-            app:min="24"
+            app:min="16"
             app:defaultValue="32"
-            android:max="128"
+            android:max="96"
             app:showSeekBarValue="true"
             app:title="Grubość Pisaka (px)" />
 
@@ -34,7 +34,35 @@
             app:preference_dialog_positive="Ustaw"
             app:preference_dialog_negative="Anuluj"
             app:default_color="@color/black"/>
+    </PreferenceCategory>
 
+    <PreferenceCategory app:title="Konfiguracja wzorca w ćwiczeniach">
+        <SeekBarPreference
+            app:key="svgSize"
+            app:min="30"
+            app:defaultValue="75"
+            android:max="100"
+            app:showSeekBarValue="true"
+            app:title="Rozmiar wzorca (% ekranu)" />
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="svgColor"
+            android:title="Kolor wzorca"
+            app:preference_dialog_title="Kolor wzorca"
+            app:preference_dialog_positive="Ustaw"
+            app:preference_dialog_negative="Anuluj"
+            app:default_color="@color/black"/>
+
+        <SeekBarPreference
+            app:key="svgOpacity"
+            app:min="5"
+            app:defaultValue="20"
+            android:max="75"
+            app:showSeekBarValue="true"
+            app:title="Przeźroczystość wzorca (%)" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Konfiguracja płótna">
         <com.skydoves.colorpickerpreference.ColorPickerPreference
             android:key="backgroundColor"
             android:title="Kolor tła"
@@ -42,22 +70,6 @@
             app:preference_dialog_positive="Ustaw"
             app:preference_dialog_negative="Anuluj"
             app:default_color="@color/white"/>
-
-        <SeekBarPreference
-            app:key="svgSize"
-            app:min="30"
-            app:defaultValue="75"
-            android:max="90"
-            app:showSeekBarValue="true"
-            app:title="Rozmiar znaku do odwzorowania (% ekranu)" />
-
-        <SeekBarPreference
-            app:key="svgOpacity"
-            app:min="5"
-            app:defaultValue="20"
-            android:max="50"
-            app:showSeekBarValue="true"
-            app:title="Przezroczystość znaku (%)" />
 
         <PreferenceScreen
             app:title="Podgląd">
@@ -69,27 +81,7 @@
         </PreferenceScreen>
     </PreferenceCategory>
 
-
-
-    <PreferenceCategory app:title="Zestaw znaków">
-        <PreferenceScreen
-            app:title="Zarządzaj znakami (wszystkie)">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetPackage="pl.polsl.paum.proj"
-                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileManageActivity"
-                />
-        </PreferenceScreen>
-
-        <PreferenceScreen
-            app:title="Zarządzaj znakami (dodane)">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetPackage="pl.polsl.paum.proj"
-                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileManageFilteredActivity"
-                />
-        </PreferenceScreen>
-
+    <PreferenceCategory app:title="Zestawy wzorców">
         <PreferenceScreen
             app:title="Dodaj znaki">
             <intent
@@ -99,6 +91,23 @@
                 />
         </PreferenceScreen>
 
+        <PreferenceScreen
+            app:title="Dodaj wzorce do ćwiczenia">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="pl.polsl.paum.proj"
+                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileManageActivity"
+                />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            app:title="Podgląd dodanych wzorców do ćwiczenia">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="pl.polsl.paum.proj"
+                android:targetClass="pl.polsl.paum.proj.fileexplorers.FileManageFilteredActivity"
+                />
+        </PreferenceScreen>
     </PreferenceCategory>
 
 </PreferenceScreen>

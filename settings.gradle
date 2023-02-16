@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AlphabetWriting"
+rootProject.name = "Nauka Alfabetu"
 include ':app'
