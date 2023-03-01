@@ -21,6 +21,12 @@ public class DrawCanvas extends BaseDrawCanvas {
     public List<Path> paths = new ArrayList<>();
     private Path path;
 
+    public void erasePaths()
+    {
+        paths.clear();
+        invalidate();
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();

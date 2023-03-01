@@ -27,6 +27,7 @@ public class DrawActivity extends AppCompatActivity {
 
         addReturnButton();
         addExportButton();
+        addEraseButton();
     }
 
     private void addReturnButton() {
@@ -35,6 +36,16 @@ public class DrawActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+    }
+
+    private void addEraseButton() {
+        ImageButton btn = (ImageButton)findViewById(R.id.buttonErase);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawCanvas.erasePaths();
             }
         });
     }

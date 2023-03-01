@@ -40,6 +40,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         addReturnButton();
         addNextButton();
+        addEraseButton();
     }
 
     private void finishExercise()
@@ -54,6 +55,16 @@ public class ExerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+    }
+
+    private void addEraseButton() {
+        ImageButton btn = (ImageButton)findViewById(R.id.buttonErase);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exerciseCanvas.erasePaths();
             }
         });
     }

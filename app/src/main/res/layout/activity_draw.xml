@@ -35,6 +35,15 @@
         app:srcCompat="@drawable/prev_arr" />
 
     <ImageButton
+        android:id="@+id/buttonErase"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/erase" />
+
+    <ImageButton
         android:id="@+id/buttonExport"
         android:layout_width="120dp"
         android:layout_height="120dp"

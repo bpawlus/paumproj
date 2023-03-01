@@ -87,6 +87,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/box2"
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:orientation="horizontal"
@@ -182,6 +183,21 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textMain" />
+
+        <TextView
+            android:id="@+id/textAuthors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/baloo"
+            android:text="Autorzy: Benedykt Pawlus, Jakub Kaniowski"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/imageMain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

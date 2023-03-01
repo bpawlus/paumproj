@@ -64,7 +64,7 @@ public class ExerciseCanvas extends DrawCanvas {
     {
         saveBitmap(bitmapTasks.get(taskId).getLabel());
         taskId++;
-        invalidate();
+        erasePaths();
     }
 
     @Override
